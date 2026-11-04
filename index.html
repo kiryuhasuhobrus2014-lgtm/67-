@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183b2d">
+  <meta name="description" content="Надійні садові інструменти для роботи, яка приносить задоволення.">
+  <title>Зелений Двір — садові інструменти</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --forest: #183b2d;
+      --forest-dark: #10291f;
+      --leaf: #5d8a52;
+      --lime: #d9e981;
+      --paper: #f7f8f2;
+      --white: #fff;
+      --ink: #1d2921;
+      --muted: #68736b;
+      --line: #e2e7dd;
+      --coral: #e96d4c;
+      --font-body: "DM Sans", sans-serif;
+      --font-display: "Manrope", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--font-body); }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1192px, calc(100% - 48px)); margin: 0 auto; }
+
+    .notice { min-height: 34px; display: flex; align-items: center; justify-content: center; padding: 6px 16px; background: var(--lime); color: var(--forest-dark); font-size: 11px; font-weight: 700; letter-spacing: .04em; text-align: center; }
+    .site-header { position: relative; z-index: 3; background: var(--white); }
+    .header-inner { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .brand-mark { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; background: var(--forest); color: var(--lime); }
+    .brand-mark svg { width: 21px; height: 21px; }
+    .brand-name { font-family: var(--font-display); font-size: 16px; font-weight: 800; letter-spacing: 0; line-height: 1.05; }
+    .brand-name small { display: block; margin-top: 4px; color: var(--muted); font-family: var(--font-body); font-size: 9px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
+    .main-nav { display: flex; align-items: center; gap: 32px; color: #47554c; font-size: 13px; font-weight: 600; }
+    .main-nav a:hover { color: var(--leaf); }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .cart-button { min-height: 40px; display: inline-flex; align-items: center; gap: 9px; padding: 0 14px; border: 1px solid var(--line); border-radius: 4px; background: var(--white); color: var(--forest); font-size: 12px; font-weight: 700; transition: background .2s, border-color .2s; }
+    .cart-button:hover { border-color: var(--forest); background: #f5f8f1; }
+    .cart-button svg { width: 17px; height: 17px; }
+    .cart-count { min-width: 20px; height: 20px; display: grid; place-items: center; padding: 0 5px; border-radius: 50%; background: var(--lime); font-size: 10px; }
+
+    .hero { min-height: 446px; display: flex; align-items: center; position: relative; overflow: hidden; background: #294d34 url("https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=2000&q=85") center 48% / cover no-repeat; color: var(--white); }
+    .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14, 37, 26, .88) 0%, rgba(14, 37, 26, .72) 39%, rgba(14, 37, 26, .13) 100%); }
+    .hero-content { position: relative; z-index: 1; padding: 52px 0 58px; max-width: 610px; animation: rise-in .7s ease-out both; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 20px; color: var(--lime); font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 24px; height: 1px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 570px; margin-bottom: 16px; font-family: var(--font-display); font-size: clamp(36px, 5vw, 58px); font-weight: 700; letter-spacing: 0; line-height: 1.08; }
+    .hero p { max-width: 420px; margin-bottom: 27px; color: rgba(255,255,255,.82); font-size: 15px; line-height: 1.7; }
+    .primary-link { min-height: 46px; display: inline-flex; align-items: center; gap: 13px; padding: 0 19px; border-radius: 3px; background: var(--lime); color: var(--forest-dark); font-size: 12px; font-weight: 700; transition: transform .2s, background .2s; }
+    .primary-link:hover { transform: translateY(-2px); background: #e5f49e; }
+    .primary-link svg { width: 15px; height: 15px; }
+
+    .benefits { background: var(--white); border-bottom: 1px solid var(--line); }
+    .benefit-row { min-height: 72px; display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; }
+    .benefit { display: flex; align-items: center; justify-content: center; gap: 10px; color: #435147; font-size: 11px; font-weight: 600; }
+    .benefit svg { width: 18px; height: 18px; color: var(--leaf); flex-shrink: 0; }
+
+    .catalog { padding: 62px 0 72px; scroll-margin-top: 20px; }
+    .catalog-top { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 25px; }
+    .section-kicker { margin-bottom: 9px; color: var(--leaf); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    h2 { margin-bottom: 0; font-family: var(--font-display); font-size: 31px; font-weight: 700; letter-spacing: 0; line-height: 1.2; }
+    .catalog-tools { display: flex; align-items: center; gap: 12px; }
+    .search { width: 224px; height: 40px; display: flex; align-items: center; gap: 8px; padding: 0 11px; border: 1px solid var(--line); border-radius: 3px; background: var(--white); }
+    .search svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--muted); }
+    .search input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 12px; }
+    .search input::placeholder { color: #8d978f; }
+    .category-tabs { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 23px; }
+    .category-tab { min-height: 32px; padding: 0 13px; border: 1px solid var(--line); border-radius: 3px; background: transparent; color: #59645d; font-size: 11px; font-weight: 600; transition: .18s ease; }
+    .category-tab:hover, .category-tab[aria-pressed="true"] { border-color: var(--forest); background: var(--forest); color: var(--white); }
+    .pond-tab { min-height: 32px; padding: 0 13px; border: 1px solid var(--line); border-radius: 3px; background: transparent; color: #59645d; font-size: 11px; font-weight: 600; transition: .18s ease; }
+    .pond-tab:hover, .pond-tab[aria-pressed="true"] { border-color: var(--forest); background: var(--forest); color: var(--white); }
+    .products { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+    .product { min-width: 0; overflow: hidden; border: 1px solid var(--line); background: var(--white); animation: rise-in .45s ease both; }
+    .product:nth-child(2) { animation-delay: .06s; }
+    .product:nth-child(3) { animation-delay: .12s; }
+    .product:nth-child(4) { animation-delay: .18s; }
+    .product-image { height: 206px; position: relative; overflow: hidden; background: #e5eadf; }
+    .product-image img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .4s ease; }
+    .product:hover .product-image img { transform: scale(1.045); }
+    .product-tag { position: absolute; top: 11px; left: 11px; padding: 6px 8px; background: var(--lime); color: var(--forest-dark); font-size: 9px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; }
+    .product-body { padding: 15px 15px 14px; }
+    .product-category { margin-bottom: 6px; color: var(--muted); font-size: 10px; }
+    .product h3 { min-height: 42px; margin-bottom: 14px; font-family: var(--font-display); font-size: 14px; font-weight: 700; line-height: 1.45; }
+    .product-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .price { color: var(--forest); font-size: 15px; font-weight: 700; white-space: nowrap; }
+    .add-button { width: 36px; height: 36px; display: grid; place-items: center; flex-shrink: 0; border: 0; border-radius: 3px; background: var(--forest); color: var(--white); transition: background .18s, transform .18s; }
+    .add-button:hover { transform: translateY(-1px); background: var(--leaf); }
+    .add-button svg { width: 17px; height: 17px; }
+    .empty-state { grid-column: 1 / -1; padding: 38px 20px; border: 1px dashed #cbd4c8; color: var(--muted); text-align: center; font-size: 13px; }
+    .pond-catalog { padding-top: 42px; border-top: 1px solid var(--line); }
+    .pond-note { max-width: 680px; margin: 12px 0 22px; color: var(--muted); font-size: 12px; line-height: 1.65; }
+    .pond-catalog .catalog-top { margin-bottom: 12px; }
+
+    .story { padding: 0 0 72px; }
+    .story-inner { display: grid; grid-template-columns: 1fr 1.1fr; min-height: 270px; background: #e9eee2; }
+    .story-image { min-height: 270px; background: url("https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1000&q=80") center / cover no-repeat; }
+    .story-copy { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 40px clamp(28px, 5vw, 66px); }
+    .story-copy h2 { max-width: 390px; margin-bottom: 12px; font-size: 27px; }
+    .story-copy p { max-width: 390px; margin-bottom: 18px; color: #5b685d; font-size: 13px; line-height: 1.7; }
+    .text-link { display: inline-flex; align-items: center; gap: 8px; color: var(--forest); font-size: 12px; font-weight: 700; }
+    .text-link svg { width: 15px; height: 15px; }
+
+    .site-footer { padding: 28px 0; background: var(--forest-dark); color: rgba(255,255,255,.82); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-inner .brand-name { color: var(--white); }
+    .footer-inner .brand-name small { color: rgba(255,255,255,.54); }
+    .footer-note, .footer-contact { margin: 0; font-size: 11px; }
+    .footer-contact { color: var(--lime); font-weight: 700; }
+
+    .cart-panel { width: min(360px, calc(100vw - 28px)); position: fixed; z-index: 6; top: 99px; right: max(24px, calc((100vw - 1192px) / 2)); padding: 18px; border: 1px solid var(--line); background: var(--white); box-shadow: 0 16px 45px rgba(19, 39, 27, .16); }
+    .cart-panel[hidden] { display: none; }
+    .cart-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 13px; border-bottom: 1px solid var(--line); }
+    .cart-panel-head h2 { font-size: 17px; }
+    .close-cart { width: 30px; height: 30px; display: grid; place-items: center; border: 0; background: transparent; color: var(--muted); }
+    .close-cart svg { width: 18px; height: 18px; }
+    .cart-items { max-height: 260px; overflow: auto; }
+    .cart-empty { padding: 22px 0; color: var(--muted); font-size: 12px; text-align: center; }
+    .cart-line { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 11px; }
+    .cart-line strong { display: block; margin-bottom: 4px; font-size: 12px; }
+    .cart-line span { color: var(--muted); }
+    .cart-total { display: flex; justify-content: space-between; padding: 15px 0; font-size: 13px; font-weight: 700; }
+    .checkout-button { width: 100%; min-height: 42px; border: 0; border-radius: 3px; background: var(--forest); color: var(--white); font-size: 12px; font-weight: 700; }
+    .checkout-button:disabled { background: #aab4ab; cursor: not-allowed; }
+    .toast { position: fixed; z-index: 8; right: 24px; bottom: 24px; padding: 12px 16px; background: var(--forest-dark); color: var(--white); font-size: 12px; box-shadow: 0 8px 24px #10291f30; animation: rise-in .2s ease-out both; }
+    .toast[hidden] { display: none; }
+
+    @keyframes rise-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 850px) {
+      .main-nav { gap: 18px; }
+      .products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .product-image { height: 240px; }
+      .catalog-top { align-items: flex-start; flex-direction: column; }
+      .catalog-tools { width: 100%; }
+      .search { width: min(100%, 300px); }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 32px, 430px); }
+      .notice { min-height: 31px; font-size: 9px; }
+      .header-inner { min-height: 68px; gap: 12px; }
+      .brand-mark { width: 32px; height: 32px; }
+      .brand-name { font-size: 14px; }
+      .brand-name small { font-size: 8px; }
+      .main-nav { display: none; }
+      .cart-button { min-height: 36px; padding: 0 9px; gap: 6px; font-size: 11px; }
+      .hero { min-height: 420px; background-position: 58% center; }
+      .hero::before { background: linear-gradient(90deg, rgba(14,37,26,.86), rgba(14,37,26,.4)); }
+      .hero-content { padding: 40px 0; }
+      h1 { max-width: 390px; font-size: 40px; }
+      .hero p { max-width: 330px; font-size: 13px; }
+      .benefit-row { min-height: 68px; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+      .benefit { flex-direction: column; gap: 4px; font-size: 9px; text-align: center; }
+      .benefit svg { width: 16px; height: 16px; }
+      .catalog { padding: 44px 0 52px; }
+      h2 { font-size: 25px; }
+      .catalog-tools { align-items: stretch; }
+      .search { flex: 1; }
+      .category-tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; }
+      .category-tab { flex-shrink: 0; }
+      .products { gap: 10px; }
+      .product-image { height: 155px; }
+      .product-body { padding: 12px 10px; }
+      .product h3 { min-height: 58px; margin-bottom: 10px; font-size: 12px; }
+      .product-category { font-size: 9px; }
+      .price { font-size: 13px; }
+      .add-button { width: 32px; height: 32px; }
+      .product-tag { top: 8px; left: 8px; padding: 5px 6px; font-size: 8px; }
+      .story { padding-bottom: 48px; }
+      .story-inner { grid-template-columns: 1fr; }
+      .story-image { min-height: 190px; }
+      .story-copy { padding: 27px 24px 30px; }
+      .story-copy h2 { font-size: 23px; }
+      .footer-inner { align-items: flex-start; flex-wrap: wrap; }
+      .footer-note { order: 3; width: 100%; }
+      .cart-panel { top: 91px; right: 10px; }
+      .toast { right: 12px; bottom: 12px; left: 12px; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="notice">ДОСТАВКА ПО УКРАЇНІ ВІД 1500 ₴ — БЕЗКОШТОВНО</div>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Зелений Двір — на головну">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M19.5 4.5C12 4.5 6 6.7 6 12.2c0 3 2.2 4.8 4.8 4.8 5.2 0 8.7-5.3 8.7-12.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 20c2.4-4.1 6-7.5 11-10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+        <span class="brand-name">Зелений Двір<small>садовий магазин</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Головна навігація">
+        <a href="#catalog">Каталог</a>
+        <a href="#pond">Для ставка</a>
+        <a href="#garden">Дерева й енергія</a>
+        <a href="#about">Про нас</a>
+        <a href="#contacts">Контакти</a>
+      </nav>
+      <div class="header-actions">
+        <button class="cart-button" id="cartToggle" type="button" aria-expanded="false" aria-controls="cartPanel">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 1.9-1.4L21 8H6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1" fill="currentColor"/><circle cx="18" cy="20" r="1" fill="currentColor"/></svg>
+          <span>Кошик</span><span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="wrap"><div class="hero-content">
+        <div class="eyebrow">Сезон починається тут</div>
+        <h1 id="heroTitle">Інструменти для вашого зеленого світу</h1>
+        <p>Зручні, надійні, перевірені часом. Усе, щоб догляд за садом приносив радість.</p>
+        <a class="primary-link" href="#catalog">Обрати інструмент <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div></div>
+    </section>
+
+    <section class="benefits" aria-label="Переваги магазину">
+      <div class="wrap benefit-row">
+        <div class="benefit"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7" cy="18" r="2" fill="var(--paper)" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="18" r="2" fill="var(--paper)" stroke="currentColor" stroke-width="1.6"/></svg>Швидка доставка</div>
+        <div class="benefit"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 19 6v5c0 4.5-2.8 7.9-7 10-4.2-2.1-7-5.5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Гарантія якості</div>
+        <div class="benefit"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M6 4v6m12-6v6M5 11h14v9H5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 15h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Оплата при отриманні</div>
+      </div>
+    </section>
+
+    <section class="catalog wrap" id="catalog" aria-labelledby="catalogTitle">
+      <div class="catalog-top">
+        <div><div class="section-kicker">Добірка для саду</div><h2 id="catalogTitle">Популярні інструменти</h2></div>
+        <div class="catalog-tools">
+          <label class="search"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><input id="searchInput" type="search" placeholder="Знайти інструмент" aria-label="Знайти інструмент"></label>
+        </div>
+      </div>
+      <div class="category-tabs" role="group" aria-label="Фільтр товарів">
+        <button class="category-tab" type="button" data-category="all" aria-pressed="true">Усі товари</button>
+        <button class="category-tab" type="button" data-category="Обрізка">Обрізка</button>
+        <button class="category-tab" type="button" data-category="Ручний інструмент">Ручний інструмент</button>
+        <button class="category-tab" type="button" data-category="Полив">Полив</button>
+        <button class="category-tab" type="button" data-category="Догляд за ґрунтом">Догляд за ґрунтом</button>
+      </div>
+      <div class="products" id="products">
+        <article class="product" data-category="Обрізка" data-name="Секатор садовий Gardena Comfort">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=700&q=80" alt="Садові рослини та інструменти для догляду" loading="lazy"><span class="product-tag">Хіт продажу</span></div>
+          <div class="product-body"><div class="product-category">Обрізка</div><h3>Секатор садовий Comfort</h3><div class="product-bottom"><span class="price">489 ₴</span><button class="add-button" type="button" aria-label="Додати Секатор садовий Comfort до кошика" data-title="Секатор садовий Comfort" data-price="489"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-category="Ручний інструмент" data-name="Набір садових інструментів посадковий">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=700&q=80" alt="Інструменти для роботи в саду" loading="lazy"><span class="product-tag">Набір</span></div>
+          <div class="product-body"><div class="product-category">Ручний інструмент</div><h3>Набір для посадки, 3 предмети</h3><div class="product-bottom"><span class="price">625 ₴</span><button class="add-button" type="button" aria-label="Додати Набір для посадки до кошика" data-title="Набір для посадки, 3 предмети" data-price="625"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-category="Полив" data-name="Лійка садова металева 5 літрів">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=700&q=80" alt="Доглянута зелена грядка" loading="lazy"></div>
+          <div class="product-body"><div class="product-category">Полив</div><h3>Лійка садова металева, 5 л</h3><div class="product-bottom"><span class="price">790 ₴</span><button class="add-button" type="button" aria-label="Додати Лійка садова металева до кошика" data-title="Лійка садова металева, 5 л" data-price="790"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-category="Догляд за ґрунтом" data-name="Ручний культиватор для ґрунту">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?auto=format&fit=crop&w=700&q=80" alt="Робота на городі серед зелені" loading="lazy"></div>
+          <div class="product-body"><div class="product-category">Догляд за ґрунтом</div><h3>Культиватор ручний, 3 зубці</h3><div class="product-bottom"><span class="price">345 ₴</span><button class="add-button" type="button" aria-label="Додати Культиватор ручний до кошика" data-title="Культиватор ручний, 3 зубці" data-price="345"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="catalog pond-catalog wrap" id="pond" aria-labelledby="pondTitle">
+      <div class="catalog-top">
+        <div><div class="section-kicker">Чиста вода й життя у водоймі</div><h2 id="pondTitle">Для ставка та озера</h2></div>
+        <div class="catalog-tools">
+          <label class="search"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><input id="pondSearch" type="search" placeholder="Знайти товар для ставка" aria-label="Знайти товар для ставка"></label>
+        </div>
+      </div>
+      <p class="pond-note">Плівка й фільтри для облаштування водойми, риба для зариблення та водні рослини. Наявність живої риби й рослин уточнюйте перед замовленням.</p>
+      <div class="category-tabs" role="group" aria-label="Фільтр товарів для водойми">
+        <button class="pond-tab" type="button" data-pond-category="all" aria-pressed="true">Усе для ставка</button>
+        <button class="pond-tab" type="button" data-pond-category="Обладнання">Обладнання</button>
+        <button class="pond-tab" type="button" data-pond-category="Риба">Риба</button>
+        <button class="pond-tab" type="button" data-pond-category="Рослини">Рослини</button>
+      </div>
+      <div class="products" id="pondProducts">
+        <article class="product" data-pond-category="Обладнання" data-name="Плівка ПВХ для ставка 0,5 мм">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=700&q=80" alt="Вода у природній водоймі" loading="lazy"><span class="product-tag">За м²</span></div>
+          <div class="product-body"><div class="product-category">Обладнання · плівка</div><h3>Плівка ПВХ для ставка, 0,5 мм</h3><div class="product-bottom"><span class="price">185 ₴/м²</span><button class="add-button" type="button" aria-label="Додати плівку ПВХ для ставка до кошика" data-title="Плівка ПВХ для ставка, 0,5 мм" data-price="185" data-unit="м²"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-pond-category="Обладнання" data-name="Фільтр для ставка до 10 000 л">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=700&q=80" alt="Зелена водойма серед природи" loading="lazy"><span class="product-tag">Для ставка</span></div>
+          <div class="product-body"><div class="product-category">Обладнання · очищення</div><h3>Фільтр для ставка до 10 000 л</h3><div class="product-bottom"><span class="price">3 490 ₴</span><button class="add-button" type="button" aria-label="Додати фільтр для ставка до кошика" data-title="Фільтр для ставка до 10 000 л" data-price="3490"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-pond-category="Риба" data-name="Короп кої декоративний">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=700&q=80" alt="Кольорові декоративні риби у воді" loading="lazy"><span class="product-tag">Кої</span></div>
+          <div class="product-body"><div class="product-category">Риба · декоративна</div><h3>Короп кої декоративний</h3><div class="product-bottom"><span class="price">850 ₴</span><button class="add-button" type="button" aria-label="Додати коропа кої до кошика" data-title="Короп кої декоративний" data-price="850"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-pond-category="Риба" data-name="Карась сріблястий для водойми">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=700&q=80" alt="Риба у прозорій воді" loading="lazy"></div>
+          <div class="product-body"><div class="product-category">Риба · прісноводна</div><h3>Карась сріблястий</h3><div class="product-bottom"><span class="price">95 ₴</span><button class="add-button" type="button" aria-label="Додати карася сріблястого до кошика" data-title="Карась сріблястий" data-price="95"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-pond-category="Риба" data-name="Короп звичайний для зариблення">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=700&q=80" alt="Короп у водоймі" loading="lazy"></div>
+          <div class="product-body"><div class="product-category">Риба · прісноводна</div><h3>Короп звичайний</h3><div class="product-bottom"><span class="price">140 ₴</span><button class="add-button" type="button" aria-label="Додати коропа звичайного до кошика" data-title="Короп звичайний" data-price="140"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-pond-category="Риба" data-name="Щука для зариблення водойми">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=700&q=80" alt="Прісноводна риба" loading="lazy"></div>
+          <div class="product-body"><div class="product-category">Риба · хижа</div><h3>Щука для зариблення</h3><div class="product-bottom"><span class="price">220 ₴</span><button class="add-button" type="button" aria-label="Додати щуку до кошика" data-title="Щука для зариблення" data-price="220"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-pond-category="Риба" data-name="Окунь річковий">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=700&q=80" alt="Річкова риба у воді" loading="lazy"></div>
+          <div class="product-body"><div class="product-category">Риба · прісноводна</div><h3>Окунь річковий</h3><div class="product-bottom"><span class="price">110 ₴</span><button class="add-button" type="button" aria-label="Додати окуня річкового до кошика" data-title="Окунь річковий" data-price="110"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-pond-category="Риба" data-name="Судак для зариблення">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=700&q=80" alt="Риба у прісній воді" loading="lazy"></div>
+          <div class="product-body"><div class="product-category">Риба · хижа</div><h3>Судак для зариблення</h3><div class="product-bottom"><span class="price">190 ₴</span><button class="add-button" type="button" aria-label="Додати судака до кошика" data-title="Судак для зариблення" data-price="190"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-pond-category="Риба" data-name="Лящ річковий">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=700&q=80" alt="Риба у водоймі" loading="lazy"></div>
+          <div class="product-body"><div class="product-category">Риба · прісноводна</div><h3>Лящ річковий</h3><div class="product-bottom"><span class="price">120 ₴</span><button class="add-button" type="button" aria-label="Додати ляща річкового до кошика" data-title="Лящ річковий" data-price="120"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-pond-category="Рослини" data-name="Водорості натуральні елодея">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=700&q=80" alt="Зелена водна рослинність" loading="lazy"></div>
+          <div class="product-body"><div class="product-category">Рослини · натуральні</div><h3>Елодея жива для ставка</h3><div class="product-bottom"><span class="price">160 ₴</span><button class="add-button" type="button" aria-label="Додати елодею до кошика" data-title="Елодея жива для ставка" data-price="160"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-pond-category="Рослини" data-name="Водорості штучні декоративні">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=700&q=80" alt="Декоративна зелень для водойми" loading="lazy"></div>
+          <div class="product-body"><div class="product-category">Рослини · штучні</div><h3>Водорості штучні, декор</h3><div class="product-bottom"><span class="price">120 ₴</span><button class="add-button" type="button" aria-label="Додати штучні водорості до кошика" data-title="Водорості штучні, декор" data-price="120"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-pond-category="Рослини" data-name="Латаття кувшинка для ставка">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=700&q=80" alt="Квітучі водяні лілії" loading="lazy"><span class="product-tag">Латаття</span></div>
+          <div class="product-body"><div class="product-category">Рослини · водні</div><h3>Латаття (кувшинка) для ставка</h3><div class="product-bottom"><span class="price">390 ₴</span><button class="add-button" type="button" aria-label="Додати латаття до кошика" data-title="Латаття (кувшинка) для ставка" data-price="390"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="catalog pond-catalog wrap" id="garden" aria-labelledby="gardenTitle">
+      <div class="catalog-top">
+        <div><div class="section-kicker">Затишок і користь для ділянки</div><h2 id="gardenTitle">Дерева, полив та енергія</h2></div>
+        <div class="catalog-tools">
+          <label class="search"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><input id="gardenSearch" type="search" placeholder="Знайти товар для ділянки" aria-label="Знайти товар для ділянки"></label>
+        </div>
+      </div>
+      <p class="pond-note">Плодові саджанці для саду, зручний полив і сонячні панелі для дачі. Перед купівлею саджанців перевіряйте сезонність та умови доставки.</p>
+      <div class="category-tabs" role="group" aria-label="Фільтр товарів для ділянки">
+        <button class="garden-tab pond-tab" type="button" data-garden-category="all" aria-pressed="true">Усе для ділянки</button>
+        <button class="garden-tab pond-tab" type="button" data-garden-category="Дерева">Дерева</button>
+        <button class="garden-tab pond-tab" type="button" data-garden-category="Полив">Полив</button>
+        <button class="garden-tab pond-tab" type="button" data-garden-category="Сонячні панелі">Сонячні панелі</button>
+      </div>
+      <div class="products" id="gardenProducts">
+        <article class="product" data-garden-category="Дерева" data-name="Саджанець яблуні Антонівка">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1500712617055-9f4b4d7b6f3a?auto=format&fit=crop&w=700&q=80" alt="Яблуневий сад" loading="lazy"><span class="product-tag">Плодові</span></div>
+          <div class="product-body"><div class="product-category">Дерева · яблуня</div><h3>Саджанець яблуні «Антонівка»</h3><div class="product-bottom"><span class="price">320 ₴</span><button class="add-button" type="button" aria-label="Додати саджанець яблуні до кошика" data-title="Саджанець яблуні Антонівка" data-price="320"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-garden-category="Дерева" data-name="Саджанець вишні">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=700&q=80" alt="Стиглі плоди вишні" loading="lazy"></div>
+          <div class="product-body"><div class="product-category">Дерева · вишня</div><h3>Саджанець вишні</h3><div class="product-bottom"><span class="price">290 ₴</span><button class="add-button" type="button" aria-label="Додати саджанець вишні до кошика" data-title="Саджанець вишні" data-price="290"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-garden-category="Дерева" data-name="Саджанець сливи">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1596591606975-97ee5cef3a1e?auto=format&fit=crop&w=700&q=80" alt="Стиглі сливи на гілці" loading="lazy"></div>
+          <div class="product-body"><div class="product-category">Дерева · слива</div><h3>Саджанець сливи</h3><div class="product-bottom"><span class="price">280 ₴</span><button class="add-button" type="button" aria-label="Додати саджанець сливи до кошика" data-title="Саджанець сливи" data-price="280"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-garden-category="Полив" data-name="Лійка садова пластикова 10 літрів">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=700&q=80" alt="Догляд за рослинами в саду" loading="lazy"><span class="product-tag">10 літрів</span></div>
+          <div class="product-body"><div class="product-category">Полив · для саду</div><h3>Лійка садова пластикова, 10 л</h3><div class="product-bottom"><span class="price">260 ₴</span><button class="add-button" type="button" aria-label="Додати пластикову лійку до кошика" data-title="Лійка садова пластикова, 10 л" data-price="260"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-garden-category="Сонячні панелі" data-name="Сонячна панель 100 Вт">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=700&q=80" alt="Сонячні панелі під відкритим небом" loading="lazy"><span class="product-tag">100 Вт</span></div>
+          <div class="product-body"><div class="product-category">Енергія · сонце</div><h3>Сонячна панель монокристалічна, 100 Вт</h3><div class="product-bottom"><span class="price">2 990 ₴</span><button class="add-button" type="button" aria-label="Додати сонячну панель 100 Вт до кошика" data-title="Сонячна панель монокристалічна, 100 Вт" data-price="2990"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+        <article class="product" data-garden-category="Сонячні панелі" data-name="Сонячна панель 200 Вт">
+          <div class="product-image"><img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=700&q=80" alt="Ряд сонячних панелей" loading="lazy"></div>
+          <div class="product-body"><div class="product-category">Енергія · сонце</div><h3>Сонячна панель для дачі, 200 Вт</h3><div class="product-bottom"><span class="price">4 790 ₴</span><button class="add-button" type="button" aria-label="Додати сонячну панель 200 Вт до кошика" data-title="Сонячна панель для дачі, 200 Вт" data-price="4790"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="story wrap" id="about">
+      <div class="story-inner">
+        <div class="story-image" role="img" aria-label="Зелений сад у сонячний день"></div>
+        <div class="story-copy"><div class="section-kicker">Для справжнього задоволення</div><h2>Менше зусиль. Більше саду.</h2><p>Добираємо інструменти, якими хочеться працювати сезон за сезоном. Порадимо, підкажемо і швидко відправимо ваше замовлення.</p><a class="text-link" href="#contacts">Поговорімо про ваш сад <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contacts">
+    <div class="wrap footer-inner">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M19.5 4.5C12 4.5 6 6.7 6 12.2c0 3 2.2 4.8 4.8 4.8 5.2 0 8.7-5.3 8.7-12.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 20c2.4-4.1 6-7.5 11-10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span class="brand-name">Зелений Двір<small>садовий магазин</small></span></a>
+      <p class="footer-note">Пн–Сб, 9:00–18:00 · Відправляємо по Україні</p>
+      <a class="footer-contact" href="tel:+380671234567">+38 (067) 123-45-67</a>
+    </div>
+  </footer>
+
+  <aside class="cart-panel" id="cartPanel" aria-label="Кошик" hidden>
+    <div class="cart-panel-head"><h2>Ваш кошик</h2><button class="close-cart" id="closeCart" type="button" aria-label="Закрити кошик"><svg viewBox="0 0 24 24" fill="none"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button></div>
+    <div class="cart-items" id="cartItems"><div class="cart-empty">Поки що тут порожньо</div></div>
+    <div class="cart-total"><span>Разом</span><span id="cartTotal">0 ₴</span></div>
+    <button class="checkout-button" id="checkoutButton" type="button" disabled>Оформити замовлення</button>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script>
+    const cart = new Map();
+    const cartToggle = document.querySelector("#cartToggle");
+    const cartPanel = document.querySelector("#cartPanel");
+    const cartCount = document.querySelector("#cartCount");
+    const cartItems = document.querySelector("#cartItems");
+    const cartTotal = document.querySelector("#cartTotal");
+    const checkoutButton = document.querySelector("#checkoutButton");
+    const toast = document.querySelector("#toast");
+    let toastTimer;
+    let activeCategory = "all";
+    let activePondCategory = "all";
+    let activeGardenCategory = "all";
+
+    function formatPrice(value) {
+      return `${new Intl.NumberFormat("uk-UA").format(value)} ₴`;
+    }
+
+    function updateCart() {
+      const entries = [...cart.values()];
+      const quantity = entries.reduce((sum, item) => sum + item.quantity, 0);
+      const total = entries.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      cartCount.textContent = quantity;
+      cartTotal.textContent = formatPrice(total);
+      checkoutButton.disabled = quantity === 0;
+      cartItems.replaceChildren();
+
+      if (!entries.length) {
+        const empty = document.createElement("div");
+        empty.className = "cart-empty";
+        empty.textContent = "Поки що тут порожньо";
+        cartItems.append(empty);
+        return;
+      }
+
+      entries.forEach((item) => {
+        const row = document.createElement("div");
+        row.className = "cart-line";
+        const detail = document.createElement("div");
+        const title = document.createElement("strong");
+        title.textContent = item.title;
+        const count = document.createElement("span");
+        count.textContent = `${item.quantity} ${item.unit}`;
+        const sum = document.createElement("strong");
+        sum.textContent = formatPrice(item.price * item.quantity);
+        detail.append(title, count);
+        row.append(detail, sum);
+        cartItems.append(row);
+      });
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.hidden = false;
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => { toast.hidden = true; }, 2200);
+    }
+
+    function filterProducts() {
+      const query = document.querySelector("#searchInput").value.trim().toLocaleLowerCase("uk");
+      let visible = 0;
+      document.querySelectorAll("#products .product").forEach((product) => {
+        const matchesCategory = activeCategory === "all" || product.dataset.category === activeCategory;
+        const matchesQuery = product.dataset.name.toLocaleLowerCase("uk").includes(query);
+        product.hidden = !matchesCategory || !matchesQuery;
+        if (!product.hidden) visible += 1;
+      });
+      let empty = document.querySelector("#products .empty-state");
+      if (!visible && !empty) {
+        empty = document.createElement("p");
+        empty.className = "empty-state";
+        empty.textContent = "Нічого не знайдено. Спробуйте інший запит.";
+        document.querySelector("#products").append(empty);
+      } else if (visible && empty) {
+        empty.remove();
+      }
+    }
+
+    function filterPondProducts() {
+      const query = document.querySelector("#pondSearch").value.trim().toLocaleLowerCase("uk");
+      let visible = 0;
+      document.querySelectorAll("#pondProducts .product").forEach((product) => {
+        const matchesCategory = activePondCategory === "all" || product.dataset.pondCategory === activePondCategory;
+        const matchesQuery = product.dataset.name.toLocaleLowerCase("uk").includes(query);
+        product.hidden = !matchesCategory || !matchesQuery;
+        if (!product.hidden) visible += 1;
+      });
+      let empty = document.querySelector("#pondProducts .empty-state");
+      if (!visible && !empty) {
+        empty = document.createElement("p");
+        empty.className = "empty-state";
+        empty.textContent = "Нічого не знайдено. Спробуйте інший запит.";
+        document.querySelector("#pondProducts").append(empty);
+      } else if (visible && empty) {
+        empty.remove();
+      }
+    }
+
+    function filterGardenProducts() {
+      const query = document.querySelector("#gardenSearch").value.trim().toLocaleLowerCase("uk");
+      let visible = 0;
+      document.querySelectorAll("#gardenProducts .product").forEach((product) => {
+        const matchesCategory = activeGardenCategory === "all" || product.dataset.gardenCategory === activeGardenCategory;
+        const matchesQuery = product.dataset.name.toLocaleLowerCase("uk").includes(query);
+        product.hidden = !matchesCategory || !matchesQuery;
+        if (!product.hidden) visible += 1;
+      });
+      let empty = document.querySelector("#gardenProducts .empty-state");
+      if (!visible && !empty) {
+        empty = document.createElement("p");
+        empty.className = "empty-state";
+        empty.textContent = "Нічого не знайдено. Спробуйте інший запит.";
+        document.querySelector("#gardenProducts").append(empty);
+      } else if (visible && empty) {
+        empty.remove();
+      }
+    }
+
+    document.querySelectorAll(".add-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const { title, price } = button.dataset;
+        const item = cart.get(title) || { title, price: Number(price), quantity: 0, unit: button.dataset.unit || "шт." };
+        item.quantity += 1;
+        cart.set(title, item);
+        updateCart();
+        showToast(`${title} додано до кошика`);
+      });
+    });
+
+    document.querySelectorAll(".category-tab").forEach((button) => {
+      button.addEventListener("click", () => {
+        activeCategory = button.dataset.category;
+        document.querySelectorAll(".category-tab").forEach((tab) => tab.setAttribute("aria-pressed", String(tab === button)));
+        filterProducts();
+      });
+    });
+
+    document.querySelectorAll(".pond-tab").forEach((button) => {
+      button.addEventListener("click", () => {
+        activePondCategory = button.dataset.pondCategory;
+        document.querySelectorAll(".pond-tab").forEach((tab) => tab.setAttribute("aria-pressed", String(tab === button)));
+        filterPondProducts();
+      });
+    });
+
+    document.querySelectorAll(".garden-tab").forEach((button) => {
+      button.addEventListener("click", () => {
+        activeGardenCategory = button.dataset.gardenCategory;
+        document.querySelectorAll(".garden-tab").forEach((tab) => tab.setAttribute("aria-pressed", String(tab === button)));
+        filterGardenProducts();
+      });
+    });
+
+    document.querySelector("#searchInput").addEventListener("input", filterProducts);
+    document.querySelector("#pondSearch").addEventListener("input", filterPondProducts);
+    document.querySelector("#gardenSearch").addEventListener("input", filterGardenProducts);
+    cartToggle.addEventListener("click", () => {
+      cartPanel.hidden = !cartPanel.hidden;
+      cartToggle.setAttribute("aria-expanded", String(!cartPanel.hidden));
+    });
+    document.querySelector("#closeCart").addEventListener("click", () => {
+      cartPanel.hidden = true;
+      cartToggle.setAttribute("aria-expanded", "false");
+      cartToggle.focus();
+    });
+    document.addEventListener("click", (event) => {
+      if (!cartPanel.hidden && !cartPanel.contains(event.target) && !cartToggle.contains(event.target)) {
+        cartPanel.hidden = true;
+        cartToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+    checkoutButton.addEventListener("click", () => {
+      showToast("Дякуємо! Для оформлення зателефонуйте нам.");
+    });
+  </script>
+</body>
+</html>
